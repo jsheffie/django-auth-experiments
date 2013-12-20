@@ -76,8 +76,19 @@ Lets create a app with some data.
 	│   └── views.py
 	└── manage.py
 
+* Create LinkFarm model
+* define sqlite dbms in configuration.
+* add linkfarm, django_extensions, django-rest-framework into my INSTALLED_APPS.
+* Add simple data
+* dump a fixture
+* generate a RESTFramework view.
+
+	python ./manage.py syncdb
+
 TODO
 ----------------- 
 figure out how to plug in with this.
 https://github.com/fiee/generic_django_project
+or this
+
 
