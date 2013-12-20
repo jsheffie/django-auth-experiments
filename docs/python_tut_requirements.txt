@@ -1,4 +1,7 @@
+# Got 1.6
 pygments
 
+
 # I like to have in my env. ( not actually required ) 
+# got 1.2.6
 -e git+git://github.com/django-extensions/django-extensions.git#egg=django_extensions
