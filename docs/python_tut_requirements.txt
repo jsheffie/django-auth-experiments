@@ -1,0 +1,4 @@
+pygments
+
+# I like to have in my env. ( not actually required ) 
+-e git+git://github.com/django-extensions/django-extensions.git#egg=django_extensions
