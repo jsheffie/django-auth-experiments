@@ -84,7 +84,15 @@ Lets create a app with some data.
 * generate a RESTFramework view.
 
 	python ./manage.py syncdb
+	python ./manage.py shell_plus
+	>>> LinkFarm(name="Google", link="http://www.google.com").save()
+	>>> LinkFarm(name="Yahoo", link="http://www.yahoo.com").save()
+	>>> LinkFarm(name="StackExhange", link="http://www.stackexchange.com").save()
+	ctrl-d
+	mkdir linkfarm/fixtures
+	python ./manage.py dumpdata --format=json --indent=3 linkfarm > linkfarm/fixtures/initial_data.json
 
+	
 TODO
 ----------------- 
 figure out how to plug in with this.
