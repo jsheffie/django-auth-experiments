@@ -9,6 +9,13 @@ django-auth-experiments
 Phase-One: Basic Auth RESTApi
 ========
 
+
+- [ ] a task list item
+- [ ] list syntax required
+- [ ] normal **formatting**, @mentions, #1234 refs
+- [ ] incomplete
+- [x] completed
+
 - [x] Create a django project.
 - [x] Build some simple data: [quickstart](http://django-rest-framework.org/tutorial/quickstart#project-setup)
 - [ ] Build a RESTApi to this data
