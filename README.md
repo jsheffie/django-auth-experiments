@@ -12,7 +12,7 @@ Phase-One: Basic Auth RESTApi
 * Create a django project.
 * Build some simple data: link-farm data.
 * Build a RESTApi to this data
-* Build a [Requests](http://docs.python-requests.org/en/latest/). script to query the API
+* Build a [Requests](http://docs.python-requests.org/en/latest/) script to query the API
 * Shoe-Horn in Apache
 * Create some django-users.
 * Create Basic-Authentication
@@ -49,6 +49,7 @@ Python is ready to go: now lets make a django project:
     django-admin.py newproject djauth
 
 You now have a 'djauth' django project.
+
 	├── djauth
 	│   ├── __init__.py
 	│   ├── settings.py
@@ -56,7 +57,24 @@ You now have a 'djauth' django project.
 	│   └── wsgi.py
 	└── manage.py
 
+Lets create a app with some data.
 
+	cd djauth
+	python ./manage.py startapp linkfarm
+	├── djauth
+	│   ├── __init__.py
+	│   ├── __init__.pyc
+	│   ├── settings.py
+	│   ├── settings.pyc
+	│   ├── urls.py
+	│   └── wsgi.py
+	├── linkfarm
+	│   ├── admin.py
+	│   ├── __init__.py
+	│   ├── models.py
+	│   ├── tests.py
+	│   └── views.py
+	└── manage.py
 
 TODO
 ----------------- 
