@@ -10,7 +10,7 @@ Phase-One: Basic Auth RESTApi
 ========
 
 [x] Create a django project.
-[x] Build some simple data: [quickstart](http://django-rest-framework.org/tutorial/quickstart#project-setup)
+[x] Build some simple data: link-farm data.
 [ ] Build a RESTApi to this data
 [ ] Build a 'sample_client.py' [Requests](http://docs.python-requests.org/en/latest/) script to query the API
 [ ] Create some django-users.
@@ -61,7 +61,7 @@ You now have a 'djauth' django project.
 Lets create a app with some data.
 
 	cd djauth
-	python ./manage.py startapp quickstart
+	python ./manage.py startapp linkfarm
 	├── djauth
 	│   ├── __init__.py
 	│   ├── __init__.pyc
@@ -69,49 +69,22 @@ Lets create a app with some data.
 	│   ├── settings.pyc
 	│   ├── urls.py
 	│   └── wsgi.py
-	└── quickstart
-	    ├── admin.py
-	    ├── __init__.py
-	    ├── models.py
-	    ├── tests.py
-	    └── views.py
+	├── linkfarm
+	│   ├── admin.py
+	│   ├── __init__.py
+	│   ├── models.py
+	│   ├── tests.py
+	│   └── views.py
+	└── manage.py
 
-[*] Define some quickstart serializers, views and urls.
-[*] define sqlite dbms in configuration.
-[*] add quickstart, django_extensions, django-rest-framework into my INSTALLED_APPS.
-[*] Add REST_FRAMEWORK configuration settings for pagination.
+* Create LinkFarm model
+* define sqlite dbms in configuration.
+* add linkfarm, django_extensions, django-rest-framework into my INSTALLED_APPS.
+* Add simple data
+* dump a fixture
 
 
 	python ./manage.py syncdb
-	python ./manage.py runserver localhost:8000
-
-Testing our API
-----------------
-
-Web Browser
-
-	GET:
-	http://0.0.0.0:8000/
-	http://0.0.0.0:8000/users/
-	http://0.0.0.0:8000/users/1/
-	http://0.0.0.0:8000/groups/
-	http://0.0.0.0:8000/groups/1/
-
-
-Curl
-
-	curl -H 'Accept: application/json; indent=4' -u admin:password http://127.0.0.1:8000/
-	curl -H 'Accept: application/json; indent=4' -u admin:password http://127.0.0.1:8000/users/ 
-	curl -H 'Accept: application/json; indent=4' -u admin:password http://127.0.0.1:8000/groups/ 
-
-Observations
-----------------
-[ ] Whats going on in the BASIC Authentication headers?
-
-
-
-
-
 	python ./manage.py shell_plus
 	> LinkFarm(name="Google", link="http://www.google.com").save()
 	> LinkFarm(name="Yahoo", link="http://www.yahoo.com").save()
@@ -121,7 +94,7 @@ Observations
 	python ./manage.py dumpdata --format=json --indent=3 linkfarm > linkfarm/fixtures/initial_data.json
 
 
-[ ] generate a RESTFramework view.
+* generate a RESTFramework view.
 
 TODO
 ----------------- 
