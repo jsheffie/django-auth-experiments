@@ -9,20 +9,20 @@ django-auth-experiments
 Phase-One: Basic Auth RESTApi
 ========
 
-[x] Create a django project.
-[x] Build some simple data: [quickstart](http://django-rest-framework.org/tutorial/quickstart#project-setup)
-[ ] Build a RESTApi to this data
-[ ] Build a 'sample_client.py' [Requests](http://docs.python-requests.org/en/latest/) script to query the API
-[ ] Create some django-users.
-[ ] Create Basic-Authentication
-[ ] What Changes to we have to add to our Requests script to still gather data?
-[ ] Shoe-Horn in Apache
-[ ] Any Changes to our requests script?
+- [x] Create a django project.
+- [x] Build some simple data: [quickstart](http://django-rest-framework.org/tutorial/quickstart#project-setup)
+- [ ] Build a RESTApi to this data
+- [ ] Build a 'sample_client.py' [Requests](http://docs.python-requests.org/en/latest/) script to query the API
+- [ ] Create some django-users.
+- [ ] Create Basic-Authentication
+- [ ] What Changes to we have to add to our Requests script to still gather data?
+- [ ] Shoe-Horn in Apache
+- [ ] Any Changes to our requests script?
 
 Installation Notes
 ==================
 
-To clone the project from GitHub using git::
+To clone the project from GitHub using git:
 
     git clone https://github.com/jsheffie/django-auth-experiments
 
@@ -76,10 +76,10 @@ Lets create a app with some data.
 	    ├── tests.py
 	    └── views.py
 
-[*] Define some quickstart serializers, views and urls.
-[*] define sqlite dbms in configuration.
-[*] add quickstart, django_extensions, django-rest-framework into my INSTALLED_APPS.
-[*] Add REST_FRAMEWORK configuration settings for pagination.
+- [*] Define some quickstart serializers, views and urls.
+- [*] define sqlite dbms in configuration.
+- [*] add quickstart, django_extensions, django-rest-framework into my INSTALLED_APPS.
+- [*] Add REST_FRAMEWORK configuration settings for pagination.
 
 
 	python ./manage.py syncdb
@@ -106,22 +106,17 @@ Curl
 
 Observations
 ----------------
-[ ] Whats going on in the BASIC Authentication headers?
+- [ ] Whats going on in the BASIC Authentication headers?
 
 
 
 
-
-	python ./manage.py shell_plus
-	> LinkFarm(name="Google", link="http://www.google.com").save()
-	> LinkFarm(name="Yahoo", link="http://www.yahoo.com").save()
-	> LinkFarm(name="StackExhange", link="http://www.stackexchange.com").save()
-	ctrl-d
+Dumping a fixture with data
+----------------
 	mkdir linkfarm/fixtures
 	python ./manage.py dumpdata --format=json --indent=3 linkfarm > linkfarm/fixtures/initial_data.json
 
 
-[ ] generate a RESTFramework view.
 
 TODO
 ----------------- 
