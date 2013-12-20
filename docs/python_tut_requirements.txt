@@ -1,6 +1,8 @@
 # Got 1.6
 pygments
 
+# got 2.1.0
+requests
 
 # I like to have in my env. ( not actually required ) 
 # got 1.2.6

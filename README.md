@@ -4,7 +4,16 @@ django-auth-experiments
 
 **Some Experimenting with RESTApi's and Basic Authentication Headers**
 
-**Author:** Jeff Sheffield.  [Follow me on Twitter](https://twitter.com/jeffsheffield).
+The point here is to get to write some in-depth requsts scripts. While getting to know
+the details of both sides of the house. Server-and-Client.
+
+This was done in a very community oriented way: First I started with the
+rest_framework [quickstart](http://django-rest-framework.org/tutorial/quickstart#project-setup)
+app. Then I followed the rest_framework tutorial a bit futher and did the [pastbin](http://django-rest-framework.org/tutorial/1-serialization) syntax highlighter. I followed this all up by writting a *sample_client.py* using python's [Requests](http://docs.python-requests.org/en/latest/) library.
+
+Futhermore I explored the authentication headers that are passed two and from the server with BASIC Authtentiation
+
+**Narrator:** Jeff Sheffield.  [Follow me on Twitter](https://twitter.com/jeffsheffield).
 
 Phase-One: Basic Auth RESTApi
 ========
@@ -88,6 +97,10 @@ Lets create a app with some data.
 Testing our API
 ----------------
 
+Terminal 1:
+
+	python ./manage.py runserver 0.0.0.0:8000
+
 Web Browser
 
 	GET:
@@ -96,17 +109,40 @@ Web Browser
 	http://0.0.0.0:8000/users/1/
 	http://0.0.0.0:8000/groups/
 	http://0.0.0.0:8000/groups/1/
+	http://0.0.0.0:8000/groups/1/?format=json
 
 
 Curl
 
-	curl -H 'Accept: application/json; indent=4' -u admin:password http://127.0.0.1:8000/
-	curl -H 'Accept: application/json; indent=4' -u admin:password http://127.0.0.1:8000/users/ 
-	curl -H 'Accept: application/json; indent=4' -u admin:password http://127.0.0.1:8000/groups/ 
+	curl -X GET -H 'Accept: application/json; indent=4' -u admin:password http://127.0.0.1:8000/
+	curl -X GET -H 'Accept: application/json; indent=4' -u admin:password http://127.0.0.1:8000/users/ 
+	curl -X GET -H 'Accept: application/json; indent=4' -u admin:password http://127.0.0.1:8000/groups/ 
+
+Writing the Request's client
+----------------
+
+	utils/sample_client.py
 
 Observations
 ----------------
-- [ ] Whats going on in the BASIC Authentication headers?
+- [*] Whats going on in the BASIC Authentication headers?
+
+So first, go low:
+I modified the 'sample_client.py' script to only request '/users/'. I made sure that my rest_framework server code view: UserViewSet class has the 'permission_classes' set to 'IsAuthenticated' thus requiring authentication for this resource.
+
+I modified 'sample_client.py' to try to first request the resource without any authentication.
+Then follow that up with a BasicAuthentication request if the first one fails with any status
+code other thant 200.
+
+I fired up wireshark and listed on the loopback interface. Then filtered for tcp.port == 8000. This got the ball rollowing. 
+
+So what happened?
+
+I realized that the server is passing back a On the first unauthenticated request.
+The server responds with HTTP_STATUS_CODE: 403 Forbidden
+
+
+
 
 
 
@@ -124,4 +160,9 @@ figure out how to plug in with this.
 https://github.com/fiee/generic_django_project
 or this
 
+References
+----------------- 
+* [httpbin](http://httpbin.org/)
+* [Requests](http://docs.python-requests.org/en/latest/)
+* [Basic Authentication](http://en.wikipedia.org/wiki/Basic_access_authentication)
 
