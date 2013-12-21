@@ -139,7 +139,18 @@ I fired up wireshark and listed on the loopback interface. Then filtered for tcp
 So what happened?
 
 I realized that the server is passing back a On the first unauthenticated request.
-The server responds with HTTP_STATUS_CODE: 403 Forbidden
+The server responds with http/1.0 header HTTP_STATUS_CODE: 403 Forbidden
+
+Then the client reqsonds with *Authorization: Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==* just as described in this [Basic Authentication](http://en.wikipedia.org/wiki/Basic_access_authentication) wiki.
+
+However this sucks... I feel like I am really missing the picture here. This is hard to see and debug.
+
+I was not able to get: [httpbin](http://httpbin.org/) wired in the way I expected to be able too.
+
+Wire in some django middleware to display the header.
+----------------
+We have all of this data in the django framework, how hard would it be to print it? or log it to a file. 'djauth/quickstart/middleware/logging.py' 
+Note: this is not a production type of thing you want to run.
 
 
 
