@@ -16,6 +16,9 @@ router.register(r'groups', qs_views.GroupViewSet)
 
 urlpatterns = patterns('',
 	url(r'^', include(router.urls)),
+	url(r'testing_users/', qs_views.testing_users),
+	url(r'logout/', qs_views.logout_view),
+	(r'^accounts/login/$', 'django.contrib.auth.views.login'),
 
 	# rest_framework's browsable url's
 	url(r'api-auth/', include('rest_framework.urls', namespace='rest_framework')),
