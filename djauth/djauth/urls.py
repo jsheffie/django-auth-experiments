@@ -19,6 +19,8 @@ urlpatterns = patterns('',
 	url(r'testing_users/', qs_views.testing_users),
 	url(r'logout/', qs_views.logout_view),
 	(r'^accounts/login/$', 'django.contrib.auth.views.login'),
+	url(r'no/auth/view/', qs_views.no_auth_view),
+	url(r'auth/view/',    qs_views.auth_view),
 
 	# rest_framework's browsable url's
 	url(r'api-auth/', include('rest_framework.urls', namespace='rest_framework')),

@@ -31,10 +31,30 @@ class GroupViewSet(viewsets.ModelViewSet):
 
 @login_required
 def testing_users( request ):
-	return HttpResponse("Hello authenticated user %s <br><a href='/logout/'>Logout</a>" % ( request.user.username ));
+	ret_str = "Hello Authenticated user required. "
+	ret_str += "<br>User: %s" % ( request.user.username )
+	ret_str +="<br><a href='/logout/'>Logout</a>"
+	return HttpResponse( ret_str );
+
+def no_auth_view( request ):
+	ret_str = "No Authenticated user required"
+	ret_str += "<br>User: %s" % ( request.user.username )
+	ret_str += "<br><a href='/auth/view/'>Auth Required</a>"
+	ret_str += "<br><a href='/no/auth/view/'>No Auth Required</a>"
+	ret_str +="<br><a href='/logout/'>Logout</a>"
+	return HttpResponse( ret_str );
+
+@login_required
+def auth_view( request ):
+	ret_str = "Authenticated user required"
+	ret_str += "<br>User: %s" % ( request.user.username )
+	ret_str += "<br><a href='/auth/view/'>Auth Required</a>"
+	ret_str += "<br><a href='/no/auth/view/'>No Auth Required</a>"
+	ret_str +="<br><a href='/logout/'>Logout</a>"
+	return HttpResponse( ret_str );
 
 def logout_view(request):
 	logout( request )
-	return HttpResponseRedirect(redirect_to="/testing_users/");
+	return HttpResponseRedirect(redirect_to="/no/auth/view/");
 
 

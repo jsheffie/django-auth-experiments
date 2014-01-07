@@ -50,7 +50,6 @@ def server_request(sreq, server_url, auth=None, show_headers=None):
 		print "-"*50
 	return req
 
-
 if __name__ == '__main__':
 
 	show_http_headers=True
