@@ -22,10 +22,18 @@ class LoggingMiddleware(object):
         wsgi_env = [ 'wsgi.input','wsgi.multithread','wsgi.version','wsgi.multiprocess',
         'wsgi.run_once','wsgi.file_wrapper','wsgi.errors', 'wsgi.url_scheme']
 
+        wsgi_prod_env = ['mod_wsgi.application_group', 'mod_wsgi.callable_object', 
+        'mod_wsgi.enable_sendfile', 'mod_wsgi.input_chunked', 'mod_wsgi.listener_port',
+        'mod_wsgi.queue_start', 'mod_wsgi.request_handler', 'mod_wsgi.script_reloading',
+        'mod_wsgi.version' ]
+
         server_env = ['SERVER_SOFTWARE','HOME', 'DJANGO_SETTINGS_MODULE', 
         'GATEWAY_INTERFACE','OLDPWD', 'PWD' ]
 
-        prune_em = linux_env + virt_env + wsgi_env + server_env
+        prod_server_env = ['DOCUMENT_ROOT', 'PATH_TRANSLATED', 'SCRIPT_FILENAME',
+        'SERVER_ADDR', 'SERVER_ADMIN', 'SERVER_NAME' ]
+
+        prune_em = linux_env + virt_env + wsgi_devel_env + wsgi_prod_env + server_env + prod_server_env
 
         for prune in prune_em:
             cleandict.pop(prune, None)
