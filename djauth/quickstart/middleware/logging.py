@@ -14,7 +14,9 @@ class LoggingMiddleware(object):
         'XDG_RUNTIME_DIR', 'SSH_AUTH_SOCK', 'GDMSESSION','DEFAULTS_PATH',
         'XDG_SEAT_PATH', 'LESSCLOSE', 'DBUS_SESSION_BUS_ADDRESS', '_', 
         'DESKTOP_SESSION', 'UBUNTU_MENUPROXY', 'GTK_MODULES','XDG_DATA_DIRS',
-        'XDG_CONFIG_DIRS', 'XDG_SESSION_COOKIE']
+        'XDG_CONFIG_DIRS', 'HISTSIZE', 'WINDOW', 'HISTCONTROL', 'G_BROKEN_FILENAMES', 'CVS_RSH'] #'XDG_SESSION_COOKIE']
+
+        ssh_env = [ 'SSH_CLIENT','SSH_CONNECTION', 'SSH_TTY', 'STY', 'TERMCAP']
 
         virt_env = ['VIRTUALENVWRAPPER_LOG_DIR', 'WORKON_HOME','VIRTUAL_ENV',
         'VIRTUALENVWRAPPER_HOOK_DIR', 'VIRTUALENVWRAPPER_PROJECT_FILENAME']
@@ -27,13 +29,16 @@ class LoggingMiddleware(object):
         'mod_wsgi.queue_start', 'mod_wsgi.request_handler', 'mod_wsgi.script_reloading',
         'mod_wsgi.version' ]
 
-        server_env = ['SERVER_SOFTWARE','HOME', 'DJANGO_SETTINGS_MODULE', 
-        'GATEWAY_INTERFACE','OLDPWD', 'PWD' ]
+        server_env = ['SERVER_SOFTWARE','HOME', 'GATEWAY_INTERFACE','OLDPWD', 'PWD' ]
 
         prod_server_env = ['DOCUMENT_ROOT', 'PATH_TRANSLATED', 'SCRIPT_FILENAME',
         'SERVER_ADDR', 'SERVER_ADMIN', 'SERVER_NAME' ]
 
-        prune_em = linux_env + virt_env + wsgi_devel_env + wsgi_prod_env + server_env + prod_server_env
+        django_stuff = [ 'CELERY_LOADER', 'DJANGO_SETTINGS_MODULE']
+
+        questionable_stuff = ['TZ', 'MAIL', 'USER', 'LOGNAME']
+
+        prune_em = linux_env + ssh_env + virt_env + wsgi_devel_env + wsgi_prod_env + server_env + prod_server_env + django_stuff + questionable_stuff
 
         for prune in prune_em:
             cleandict.pop(prune, None)
